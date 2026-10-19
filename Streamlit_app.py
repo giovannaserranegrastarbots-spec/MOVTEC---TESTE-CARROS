@@ -4,6 +4,7 @@ Telemetria Educacional - Versão NUVEM (dados reais via Bluetooth + Firebase)
 Atualizado com as regras de Limiares de Corte e Economia de Fichas (Gamificação).
 """
 
+Python
 import json
 import re
 import time
@@ -13,6 +14,11 @@ import pandas as pd
 import requests
 import streamlit as st
 import streamlit.components.v1 as components
+
+# 1. PRIMEIRO DE TUDO: Configuração da Página
+st.set_page_config(page_title="MOVTEC - Tecnologia que muda vidas", layout="wide")
+
+# 2. DEPOIS: O restante dos títulos e componentes
 st.title("Telemetria via Celular")
 
 # Inserindo o JavaScript para ler o sensor do smartphone
@@ -22,14 +28,11 @@ capturar_sensores_js = """
         window.addEventListener('devicemotion', (event) => {
             let accelX = event.acceleration.x;
             console.log("Aceleração X: " + accelX);
-            // Aqui você enviaria o dado para o Python
         });
     }
 </script>
 """
 components.html(capturar_sensores_js, height=0)
-
-st.set_page_config(page_title="MOVTEC - Tecnologia que muda vidas", layout="wide")
 
 
 # ----------------------------------------------------------------------
